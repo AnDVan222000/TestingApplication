@@ -1,0 +1,10 @@
+[
+  {
+    "ApiId": "/providers/microsoft.powerapps/apis/shared_logicflows",
+    "FlowNameId": "7f51b0ae-aeb1-432e-ba72-0e0b2dcdf086",
+    "Name": "CreateanewrowinSharepoint",
+    "ServiceKind": "ConnectedWadl",
+    "Type": "ServiceInfo",
+    "WorkflowEntityId": "d4bcaef6-8c39-ed11-9db0-000d3a85671e"
+  }
+]

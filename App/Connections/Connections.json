@@ -1,0 +1,102 @@
+{
+  "353f6f25-38db-408b-ae7c-f94f7e3d6f51": {
+    "connectionParameters": {
+      "sku": "Enterprise"
+    },
+    "connectionRef": {
+      "apiTier": "Standard",
+      "displayName": "SharePoint",
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1591/1.0.1591.2961/sharepointonline/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_sharepointonline",
+      "parameterHints": {},
+      "parameterHintsV2": {}
+    },
+    "datasets": {
+      "https://nestle.sharepoint.com/teams/TestingApp": {
+        "datasetOverride": {
+          "environmentVariableName": "nestlevn_TestingAppSite",
+          "name": "https://nestle.sharepoint.com/teams/TestingApp"
+        },
+        "dataSources": {
+          "Admin": {
+            "tableName": "ba9011ba-9345-4484-a9c6-9d42e7245612",
+            "tableNameOverride": {
+              "environmentVariableName": "nestlevn_Admin",
+              "name": "ba9011ba-9345-4484-a9c6-9d42e7245612"
+            }
+          },
+          "NewTestingTable": {
+            "tableName": "6707b6ae-2d0e-4fb8-8cae-9df096aee582",
+            "tableNameOverride": {
+              "environmentVariableName": "nestlevn_NewTestingTable",
+              "name": "6707b6ae-2d0e-4fb8-8cae-9df096aee582"
+            }
+          },
+          "Request Table": {
+            "tableName": "bd5f74a5-0182-41a3-baad-ab2e54a339d7",
+            "tableNameOverride": {
+              "environmentVariableName": "nestlevn_RequestTable",
+              "name": "bd5f74a5-0182-41a3-baad-ab2e54a339d7"
+            }
+          }
+        }
+      }
+    },
+    "dataSources": [
+      "NewTestingTable",
+      "Admin",
+      "Request Table"
+    ],
+    "dependencies": {},
+    "dependents": [
+      "567b19e3-8eea-4feb-b4e5-e74254559fac"
+    ],
+    "id": "353f6f25-38db-408b-ae7c-f94f7e3d6f51"
+  },
+  "567b19e3-8eea-4feb-b4e5-e74254559fac": {
+    "connectionParameters": {
+      "workFlowCallbackUri": "https://prod-16.southeastasia.logic.azure.com:443/workflows/4fc030580a4d40739227b59792d1cc31/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=efRZg1JQK7THcI8VI7sT2euvxeFb5Cm_u87SzVCmQ7o",
+      "workflowEndpoint": "/subscriptions/ce4eb7c9-9c8b-4133-9141-bac869f4b0a7/resourceGroups/12a3af23a7694654847f958f3d479f4a-fcc9fdd72cc942adb9938b9a12662436/providers/Microsoft.Logic/workflows/d46fb9a1-568d-42bb-a7bf-9448949cb6d6",
+      "workflowEntityId": "d4bcaef6-8c39-ed11-9db0-000d3a85671e",
+      "workflowName": "d46fb9a1-568d-42bb-a7bf-9448949cb6d6",
+      "workflowPath": "/subscriptions/ce4eb7c9-9c8b-4133-9141-bac869f4b0a7/resourceGroups/12a3af23a7694654847f958f3d479f4a-fcc9fdd72cc942adb9938b9a12662436/providers/Microsoft.Logic/workflows/d46fb9a1-568d-42bb-a7bf-9448949cb6d6"
+    },
+    "connectionRef": {
+      "apiTier": "Standard",
+      "displayName": "Logic flows",
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1534/1.0.1534.2605/logicflows/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_logicflows",
+      "parameterHints": {
+        "353f6f25-38db-408b-ae7c-f94f7e3d6f51": {
+          "value": "shared_sharepointonline"
+        },
+        "workflowEntityId": {
+          "value": "d4bcaef6-8c39-ed11-9db0-000d3a85671e"
+        },
+        "workflowName": {
+          "value": "d46fb9a1-568d-42bb-a7bf-9448949cb6d6"
+        }
+      },
+      "parameterHintsV2": {
+        "shared_sharepointonline": {
+          "value": "353f6f25-38db-408b-ae7c-f94f7e3d6f51"
+        },
+        "workflowEntityId": {
+          "value": "d4bcaef6-8c39-ed11-9db0-000d3a85671e"
+        },
+        "workflowName": {
+          "value": "d46fb9a1-568d-42bb-a7bf-9448949cb6d6"
+        }
+      }
+    },
+    "datasets": {},
+    "dataSources": [
+      "CreateanewrowinSharepoint"
+    ],
+    "dependencies": {
+      "shared_sharepointonline": "353f6f25-38db-408b-ae7c-f94f7e3d6f51"
+    },
+    "dependents": [],
+    "id": "567b19e3-8eea-4feb-b4e5-e74254559fac"
+  }
+}

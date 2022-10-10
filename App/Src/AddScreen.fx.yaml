@@ -1,0 +1,159 @@
+AddScreen As screen:
+    Fill: =RGBA(255,255,255,1)
+    LoadingSpinnerColor: =RGBA(211, 66, 9, 1)
+
+    "Gallery1 As gallery.'BrowseLayout_Vertical_TwoTextOneImageVariant_ver4.0'":
+        BorderColor: =RGBA(131, 24, 75, 1)
+        Items: =NewRequirementList
+        Layout: =Layout.Vertical
+        TemplatePadding: =0
+        TemplateSize: =113
+        Width: =1366
+        ZIndex: =1
+
+        TextInput1 As text:
+            BorderColor: =RGBA(131, 24, 75, 1)
+            BorderThickness: =2
+            Color: =RGBA(0, 0, 0, 1)
+            Default: =ThisItem.Product
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            FocusedBorderThickness: =4
+            Height: =34
+            HoverBorderColor: =RGBA(131, 24, 75, 1)
+            HoverColor: =RGBA(0, 0, 0, 1)
+            HoverFill: =RGBA(255, 211, 205, 1)
+            OnSelect: =Select(Parent)
+            Size: =13
+            Width: =286
+            Y: =65
+            ZIndex: =1
+
+        TextInput2 As text:
+            BorderColor: =RGBA(131, 24, 75, 1)
+            BorderThickness: =2
+            Color: =RGBA(0, 0, 0, 1)
+            Default: =ThisItem.Quantity
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            FocusedBorderThickness: =4
+            Height: =34
+            HoverBorderColor: =RGBA(131, 24, 75, 1)
+            HoverColor: =RGBA(0, 0, 0, 1)
+            HoverFill: =RGBA(255, 211, 205, 1)
+            OnSelect: =Select(Parent)
+            Size: =13
+            Width: =286
+            X: =287
+            Y: =65
+            ZIndex: =2
+
+        TextInput3 As text:
+            BorderColor: =RGBA(131, 24, 75, 1)
+            BorderThickness: =2
+            Color: =RGBA(0, 0, 0, 1)
+            Default: =ThisItem.Cost
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            FocusedBorderThickness: =4
+            Height: =34
+            HoverBorderColor: =RGBA(131, 24, 75, 1)
+            HoverColor: =RGBA(0, 0, 0, 1)
+            HoverFill: =RGBA(255, 211, 205, 1)
+            OnSelect: =Select(Parent)
+            Size: =13
+            Width: =286
+            X: =573
+            Y: =65
+            ZIndex: =3
+
+        TextInput4 As text:
+            BorderColor: =RGBA(131, 24, 75, 1)
+            BorderThickness: =2
+            Color: =RGBA(0, 0, 0, 1)
+            Default: =Value(TextInput2.Text) * Value(TextInput3.Text)
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            FocusedBorderThickness: =4
+            Height: =34
+            HoverBorderColor: =RGBA(131, 24, 75, 1)
+            HoverColor: =RGBA(0, 0, 0, 1)
+            HoverFill: =RGBA(255, 211, 205, 1)
+            OnSelect: =Select(Parent)
+            Size: =13
+            Width: =286
+            X: =859
+            Y: =65
+            ZIndex: =4
+
+        Icon2 As icon.Trash:
+            BorderColor: =RGBA(131, 24, 75, 1)
+            Color: =RGBA(131, 24, 75, 1)
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(244, 244, 244, 1)
+            Height: =26
+            Icon: =Icon.Trash
+            OnSelect: =Remove(NewRequirementList,ThisItem)
+            Width: =26
+            X: =1250
+            Y: =73
+            ZIndex: =6
+
+    Button2 As button:
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        Fill: =RGBA(211, 66, 9, 1)
+        FontWeight: =FontWeight.Semibold
+        HoverColor: =RGBA(255, 255, 255, 1)
+        HoverFill: =ColorFade(RGBA(211, 66, 9, 1), -20%)
+        OnSelect: |-
+            =Set(
+                ItemRecord,
+                Patch(
+                    'Request Table',
+                    Defaults('Request Table'),
+                    {
+                        Email: User().Email,
+                        'Request State': {Value: "Pending"}
+                    }
+                )
+            );
+            ForAll(Gallery1.AllItems As Source,
+                Patch(
+                NewTestingTable,
+                Defaults(NewTestingTable),
+                {
+                    Product: Source.TextInput1.Text,
+                    RequestID: ItemRecord.ID,
+                    Quantity: Value(Source.TextInput2.Text),
+                    Cost: Value(Source.TextInput3.Text),
+                    Total: Value(Source.TextInput2.Text) * Value(Source.TextInput3.Text),
+                    Status: {Value: "Pending"}
+                }
+            ));
+            Navigate(UserScreen)
+        Size: =15
+        Text: ="Confirm"
+        X: =603
+        Y: =657
+        ZIndex: =2
+
+    Icon1 As icon.Add:
+        BorderColor: =RGBA(131, 24, 75, 1)
+        Color: =RGBA(131, 24, 75, 1)
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(244, 244, 244, 1)
+        Height: =26
+        Icon: =Icon.Add
+        OnSelect: |-
+            =Collect(NewRequirementList, {Product: "", Cost: 1,Quantity:1,Total:Cost*Quantity })
+        Width: =26
+        X: =1219
+        Y: =659
+        ZIndex: =3
+
