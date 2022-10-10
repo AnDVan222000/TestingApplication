@@ -14,7 +14,8 @@
     "datasets": {
       "https://nestle.sharepoint.com/teams/TestingApp": {
         "datasetOverride": {
-          "environmentVariableName": "nestlevn_TestingAppSite"
+          "environmentVariableName": "nestlevn_TestingAppSite",
+          "name": "https://nestle.sharepoint.com/teams/TestingApp"
         },
         "dataSources": {
           "Admin": {
