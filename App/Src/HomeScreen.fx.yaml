@@ -126,9 +126,9 @@ HomeScreen As screen:
             =Collect (NewRequirementList, {Product: "", Cost: 1,Quantity:1,Total:Cost*Quantity });
             Navigate(AddScreen)
         Size: =15
-        Text: ="Add"
-        X: =590
-        Y: =643
+        Text: ="Add more item"
+        X: =600
+        Y: =541
         ZIndex: =2
 
     Button1_7 As button:
