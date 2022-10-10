@@ -127,7 +127,7 @@ HomeScreen As screen:
             Navigate(AddScreen)
         Size: =15
         Text: ="Add"
-        X: =590
+        X: =326
         Y: =643
         ZIndex: =2
 
